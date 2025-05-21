@@ -11,7 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('rewards', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->enum('type', ['badge', 'loot', 'bonus']);
+            $table->string('name');
+            $table->text('description');
+            $table->string('given_for');
+            $table->timestamps();
+        });
     }
 
     /**

@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('quest_progress', function (Blueprint $table) {
             $table->id();
+            $table->boolean('is_completed');
+            $table->dateTime('completed_at')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('quest_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
