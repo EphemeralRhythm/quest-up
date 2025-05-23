@@ -45,4 +45,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function plans() {
+        return $this->hasMany(Plan::class);
+    }
+    public function questProgress() {
+        return $this->hasMany(QuestProgress::class);
+    }
+
+    public function rewards() {
+        return $this->hasMany(Reward::class);
+    }
 }
